@@ -139,6 +139,102 @@ const Index = () => {
     );
   };
 
+  const renderMixedContent = () => {
+    const content = [];
+    let videoIndex = 0;
+    let shortIndex = 0;
+    const shortsToShow = [0, 2, 4];
+
+    for (let i = 0; i < 36; i++) {
+      if (i > 0 && i % 8 === 0 && shortIndex < shortsToShow.length) {
+        content.push({ type: 'short', data: shortsData[shortsToShow[shortIndex]] });
+        shortIndex++;
+      } else if (videoIndex < videoData.length) {
+        content.push({ type: 'video', data: videoData[videoIndex] });
+        videoIndex++;
+      }
+    }
+
+    return content.map((item, index) => {
+      if (item.type === 'short') {
+        const short = item.data;
+        return (
+          <Card 
+            key={`short-${short.id}`}
+            className="bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:border-primary/60"
+          >
+            <div className="relative aspect-[9/16] overflow-hidden bg-gradient-to-b from-primary/20 to-background">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Icon name="Play" size={48} className="text-primary/40" />
+              </div>
+              <div className="absolute top-2 right-2">
+                <Badge className="bg-primary text-white border-0 text-xs">
+                  <Icon name="Smartphone" size={10} className="mr-1" />
+                  Shorts
+                </Badge>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-background/90 to-transparent">
+                <h3 className="text-foreground text-sm font-medium mb-1 line-clamp-2">
+                  {short.title}
+                </h3>
+                <div className="flex flex-wrap gap-1 mb-1">
+                  {short.hashtags.map((tag, i) => (
+                    <span key={i} className="text-xs text-primary">{tag}</span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <Icon name="Eye" size={12} />
+                  <span>{formatNumber(short.views)}</span>
+                </div>
+              </div>
+            </div>
+          </Card>
+        );
+      } else {
+        const video = item.data;
+        return (
+          <Card 
+            key={video.id} 
+            className={`bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 ${getHoverGlowClass(video.likes, video.dislikes)}`}
+          >
+            <div className="relative aspect-video overflow-hidden">
+              <img 
+                src={video.thumbnail} 
+                alt={video.title}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            
+            <div className="p-4 space-y-3">
+              <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
+                {video.title}
+              </h3>
+              
+              <p className="text-foreground/80 text-sm">
+                {video.channel}
+              </p>
+              
+              <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <Icon name="Eye" size={14} />
+                  <span>{formatNumber(video.views)}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Icon name="Heart" size={14} />
+                  <span>{formatNumber(video.likes)}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Icon name="X" size={14} />
+                  <span>{formatNumber(video.dislikes)}</span>
+                </div>
+              </div>
+            </div>
+          </Card>
+        );
+      }
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
@@ -213,45 +309,7 @@ const Index = () => {
             renderShortsSection()
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {videoData.map((video) => (
-                <Card 
-                  key={video.id} 
-                  className={`bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 ${getHoverGlowClass(video.likes, video.dislikes)}`}
-                >
-                  <div className="relative aspect-video overflow-hidden">
-                    <img 
-                      src={video.thumbnail} 
-                      alt={video.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  
-                  <div className="p-4 space-y-3">
-                    <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
-                      {video.title}
-                    </h3>
-                    
-                    <p className="text-foreground/80 text-sm">
-                      {video.channel}
-                    </p>
-                    
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1.5">
-                        <Icon name="Eye" size={14} />
-                        <span>{formatNumber(video.views)}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Icon name="Heart" size={14} />
-                        <span>{formatNumber(video.likes)}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Icon name="X" size={14} />
-                        <span>{formatNumber(video.dislikes)}</span>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+              {renderMixedContent()}
             </div>
           )}
         </main>
