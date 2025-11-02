@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 
 const videoData = [
@@ -25,6 +26,13 @@ const videoData = [
   { id: 18, title: 'Генная терапия: дизайнерские дети', channel: 'BioEthics', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 21800000, likes: 1400000, dislikes: 890000 },
   { id: 19, title: 'Новое супероружие России', channel: 'DefenseNews', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 48700000, likes: 3600000, dislikes: 720000 },
   { id: 20, title: 'Голография в реальной жизни', channel: 'HoloTech', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 37400000, likes: 3100000, dislikes: 280000 }
+];
+
+const shortsData = [
+  { id: 101, title: 'Квантовый прорыв за 60 сек', hashtags: ['#наука', '#квант'], views: 12400000 },
+  { id: 102, title: 'ИИ рисует будущее', hashtags: ['#AI', '#искусство'], views: 8700000 },
+  { id: 103, title: 'Космос ближе чем кажется', hashtags: ['#космос', '#марс'], views: 15200000 },
+  { id: 104, title: 'Робот против человека', hashtags: ['#технологии', '#будущее'], views: 9300000 }
 ];
 
 const newsData = [
@@ -62,6 +70,20 @@ const getHoverGlowClass = (likes: number, dislikes: number): string => {
 
 const Index = () => {
   const [activeMenu, setActiveMenu] = useState('Рекомендации');
+
+  const mixedContent = [];
+  let videoIndex = 0;
+  let shortIndex = 0;
+
+  for (let i = 0; i < 24; i++) {
+    if (i > 0 && i % 7 === 0 && shortIndex < shortsData.length) {
+      mixedContent.push({ type: 'short', data: shortsData[shortIndex] });
+      shortIndex++;
+    } else if (videoIndex < videoData.length) {
+      mixedContent.push({ type: 'video', data: videoData[videoIndex] });
+      videoIndex++;
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -134,45 +156,87 @@ const Index = () => {
 
         <main className="flex-1 ml-64 p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videoData.map((video) => (
-              <Card 
-                key={video.id} 
-                className={`bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 ${getHoverGlowClass(video.likes, video.dislikes)}`}
-              >
-                <div className="relative aspect-video overflow-hidden">
-                  <img 
-                    src={video.thumbnail} 
-                    alt={video.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                
-                <div className="p-4 space-y-3">
-                  <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
-                    {video.title}
-                  </h3>
-                  
-                  <p className="text-foreground/80 text-sm">
-                    {video.channel}
-                  </p>
-                  
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1.5">
-                      <Icon name="Eye" size={14} />
-                      <span>{formatNumber(video.views)}</span>
+            {mixedContent.map((item, index) => {
+              if (item.type === 'short') {
+                const short = item.data;
+                return (
+                  <Card 
+                    key={`short-${short.id}`}
+                    className="bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:border-primary/60"
+                  >
+                    <div className="relative aspect-[9/16] overflow-hidden bg-gradient-to-b from-primary/20 to-background">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Icon name="Play" size={64} className="text-primary/50" />
+                      </div>
+                      <div className="absolute top-3 right-3">
+                        <Badge className="bg-primary text-white border-0">
+                          <Icon name="Smartphone" size={12} className="mr-1" />
+                          Shorts
+                        </Badge>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Icon name="Heart" size={14} />
-                      <span>{formatNumber(video.likes)}</span>
+                    
+                    <div className="p-4 space-y-2">
+                      <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
+                        {short.title}
+                      </h3>
+                      
+                      <div className="flex flex-wrap gap-1">
+                        {short.hashtags.map((tag, i) => (
+                          <span key={i} className="text-xs text-primary">{tag}</span>
+                        ))}
+                      </div>
+                      
+                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <Icon name="Eye" size={14} />
+                        <span>{formatNumber(short.views)}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Icon name="X" size={14} />
-                      <span>{formatNumber(video.dislikes)}</span>
+                  </Card>
+                );
+              } else {
+                const video = item.data;
+                return (
+                  <Card 
+                    key={video.id} 
+                    className={`bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 ${getHoverGlowClass(video.likes, video.dislikes)}`}
+                  >
+                    <div className="relative aspect-video overflow-hidden">
+                      <img 
+                        src={video.thumbnail} 
+                        alt={video.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
                     </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
+                    
+                    <div className="p-4 space-y-3">
+                      <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
+                        {video.title}
+                      </h3>
+                      
+                      <p className="text-foreground/80 text-sm">
+                        {video.channel}
+                      </p>
+                      
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                        <div className="flex items-center gap-1.5">
+                          <Icon name="Eye" size={14} />
+                          <span>{formatNumber(video.views)}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Icon name="Heart" size={14} />
+                          <span>{formatNumber(video.likes)}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Icon name="X" size={14} />
+                          <span>{formatNumber(video.dislikes)}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              }
+            })}
           </div>
         </main>
       </div>
