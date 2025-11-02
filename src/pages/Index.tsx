@@ -25,14 +25,32 @@ const videoData = [
   { id: 17, title: 'Роботы заменят всех людей', channel: 'Future Jobs', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 14200000, likes: 680000, dislikes: 1400000 },
   { id: 18, title: 'Генная терапия: дизайнерские дети', channel: 'BioEthics', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 21800000, likes: 1400000, dislikes: 890000 },
   { id: 19, title: 'Новое супероружие России', channel: 'DefenseNews', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 48700000, likes: 3600000, dislikes: 720000 },
-  { id: 20, title: 'Голография в реальной жизни', channel: 'HoloTech', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 37400000, likes: 3100000, dislikes: 280000 }
+  { id: 20, title: 'Голография в реальной жизни', channel: 'HoloTech', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 37400000, likes: 3100000, dislikes: 280000 },
+  { id: 21, title: 'Нанотехнологии спасут мир', channel: 'NanoWorld', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 25600000, likes: 2000000, dislikes: 450000 },
+  { id: 22, title: 'Виртуальная реальность нового уровня', channel: 'VR Experience', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 43100000, likes: 3400000, dislikes: 620000 },
+  { id: 23, title: 'Ядерный синтез: прорыв века', channel: 'Energy Future', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 58900000, likes: 4700000, dislikes: 380000 },
+  { id: 24, title: '3D печать органов человека', channel: 'BioTech Lab', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 36200000, likes: 2800000, dislikes: 510000 },
+  { id: 25, title: 'Летающие автомобили в 2030', channel: 'FutureCars', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 62300000, likes: 5100000, dislikes: 890000 },
+  { id: 26, title: 'Искусственная гравитация реальна', channel: 'Physics World', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 29700000, likes: 2300000, dislikes: 340000 },
+  { id: 27, title: 'Климат: последний шанс', channel: 'EcoAlert', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 18400000, likes: 920000, dislikes: 1500000 },
+  { id: 28, title: 'Новая эра космических путешествий', channel: 'SpaceX News', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 55800000, likes: 4500000, dislikes: 290000 },
+  { id: 29, title: 'Суперпроводники при комнатной температуре', channel: 'Materials Science', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 32100000, likes: 2600000, dislikes: 410000 },
+  { id: 30, title: 'Киберспорт: профессия будущего', channel: 'Gaming Pro', thumbnail: 'https://cdn.poehali.dev/projects/41a55fdc-922c-4d5f-bbde-b4de820c36ca/files/0d9b536c-bfb1-4758-aaa4-ebdd359f8f1f.jpg', views: 47600000, likes: 3700000, dislikes: 680000 }
 ];
 
 const shortsData = [
   { id: 101, title: 'Квантовый прорыв за 60 сек', hashtags: ['#наука', '#квант'], views: 12400000 },
   { id: 102, title: 'ИИ рисует будущее', hashtags: ['#AI', '#искусство'], views: 8700000 },
   { id: 103, title: 'Космос ближе чем кажется', hashtags: ['#космос', '#марс'], views: 15200000 },
-  { id: 104, title: 'Робот против человека', hashtags: ['#технологии', '#будущее'], views: 9300000 }
+  { id: 104, title: 'Робот против человека', hashtags: ['#технологии', '#будущее'], views: 9300000 },
+  { id: 105, title: 'Нейросеть пишет музыку', hashtags: ['#AI', '#музыка'], views: 11200000 },
+  { id: 106, title: 'Телепортация атомов', hashtags: ['#физика', '#квант'], views: 7800000 },
+  { id: 107, title: 'Биохакинг за минуту', hashtags: ['#биохакинг', '#здоровье'], views: 13500000 },
+  { id: 108, title: 'Дроны будущего сегодня', hashtags: ['#технологии', '#дроны'], views: 10900000 },
+  { id: 109, title: 'VR изменит все', hashtags: ['#VR', '#будущее'], views: 14600000 },
+  { id: 110, title: 'Криптография нового поколения', hashtags: ['#крипто', '#безопасность'], views: 6700000 },
+  { id: 111, title: 'Марс через 10 лет', hashtags: ['#космос', '#марс'], views: 16800000 },
+  { id: 112, title: 'ИИ-художник', hashtags: ['#AI', '#искусство'], views: 12100000 }
 ];
 
 const newsData = [
@@ -71,19 +89,55 @@ const getHoverGlowClass = (likes: number, dislikes: number): string => {
 const Index = () => {
   const [activeMenu, setActiveMenu] = useState('Рекомендации');
 
-  const mixedContent = [];
-  let videoIndex = 0;
-  let shortIndex = 0;
-
-  for (let i = 0; i < 24; i++) {
-    if (i > 0 && i % 7 === 0 && shortIndex < shortsData.length) {
-      mixedContent.push({ type: 'short', data: shortsData[shortIndex] });
-      shortIndex++;
-    } else if (videoIndex < videoData.length) {
-      mixedContent.push({ type: 'video', data: videoData[videoIndex] });
-      videoIndex++;
+  const renderShortsSection = () => {
+    const shortsRows = [];
+    for (let i = 0; i < shortsData.length; i += 5) {
+      shortsRows.push(shortsData.slice(i, i + 5));
     }
-  }
+
+    return (
+      <div className="space-y-12">
+        {shortsRows.map((row, rowIndex) => (
+          <div key={rowIndex}>
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+              {row.map((short) => (
+                <Card 
+                  key={short.id}
+                  className="flex-shrink-0 w-[280px] bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:border-primary/60"
+                >
+                  <div className="relative h-[480px] overflow-hidden bg-gradient-to-b from-primary/20 to-background">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Icon name="Play" size={72} className="text-primary/40" />
+                    </div>
+                    <div className="absolute top-3 right-3">
+                      <Badge className="bg-primary text-white border-0">
+                        <Icon name="Smartphone" size={12} className="mr-1" />
+                        Shorts
+                      </Badge>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/90 to-transparent">
+                      <h3 className="text-foreground font-medium mb-2 line-clamp-2">
+                        {short.title}
+                      </h3>
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {short.hashtags.map((tag, i) => (
+                          <span key={i} className="text-xs text-primary">{tag}</span>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <Icon name="Eye" size={14} />
+                        <span>{formatNumber(short.views)}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -155,89 +209,51 @@ const Index = () => {
         </aside>
 
         <main className="flex-1 ml-64 p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mixedContent.map((item, index) => {
-              if (item.type === 'short') {
-                const short = item.data;
-                return (
-                  <Card 
-                    key={`short-${short.id}`}
-                    className="bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:border-primary/60"
-                  >
-                    <div className="relative aspect-[9/16] overflow-hidden bg-gradient-to-b from-primary/20 to-background">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Icon name="Play" size={64} className="text-primary/50" />
-                      </div>
-                      <div className="absolute top-3 right-3">
-                        <Badge className="bg-primary text-white border-0">
-                          <Icon name="Smartphone" size={12} className="mr-1" />
-                          Shorts
-                        </Badge>
-                      </div>
-                    </div>
+          {activeMenu === 'Shorts' ? (
+            renderShortsSection()
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {videoData.map((video) => (
+                <Card 
+                  key={video.id} 
+                  className={`bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 ${getHoverGlowClass(video.likes, video.dislikes)}`}
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <img 
+                      src={video.thumbnail} 
+                      alt={video.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  
+                  <div className="p-4 space-y-3">
+                    <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
+                      {video.title}
+                    </h3>
                     
-                    <div className="p-4 space-y-2">
-                      <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
-                        {short.title}
-                      </h3>
-                      
-                      <div className="flex flex-wrap gap-1">
-                        {short.hashtags.map((tag, i) => (
-                          <span key={i} className="text-xs text-primary">{tag}</span>
-                        ))}
-                      </div>
-                      
-                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <p className="text-foreground/80 text-sm">
+                      {video.channel}
+                    </p>
+                    
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-1.5">
                         <Icon name="Eye" size={14} />
-                        <span>{formatNumber(short.views)}</span>
+                        <span>{formatNumber(video.views)}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Icon name="Heart" size={14} />
+                        <span>{formatNumber(video.likes)}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Icon name="X" size={14} />
+                        <span>{formatNumber(video.dislikes)}</span>
                       </div>
                     </div>
-                  </Card>
-                );
-              } else {
-                const video = item.data;
-                return (
-                  <Card 
-                    key={video.id} 
-                    className={`bg-card/30 border-border/40 overflow-hidden cursor-pointer group transition-all duration-300 ${getHoverGlowClass(video.likes, video.dislikes)}`}
-                  >
-                    <div className="relative aspect-video overflow-hidden">
-                      <img 
-                        src={video.thumbnail} 
-                        alt={video.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    
-                    <div className="p-4 space-y-3">
-                      <h3 className="text-foreground font-medium line-clamp-2 leading-tight">
-                        {video.title}
-                      </h3>
-                      
-                      <p className="text-foreground/80 text-sm">
-                        {video.channel}
-                      </p>
-                      
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                        <div className="flex items-center gap-1.5">
-                          <Icon name="Eye" size={14} />
-                          <span>{formatNumber(video.views)}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Icon name="Heart" size={14} />
-                          <span>{formatNumber(video.likes)}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <Icon name="X" size={14} />
-                          <span>{formatNumber(video.dislikes)}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                );
-              }
-            })}
-          </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
         </main>
       </div>
     </div>
